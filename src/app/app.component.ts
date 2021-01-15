@@ -1,7 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '../../projects/dz-translate/src/lib/translate.service';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +23,6 @@ export class AppComponent implements OnInit {
     this.translateService.load(translationId).then((res) => {
       this.currentTranslationKey = this.translateService.getId();
       console.log(`new language: ${ this.currentTranslationKey }`);
-      // this.router.navigateByUrl('/en');
     });
   };
 
