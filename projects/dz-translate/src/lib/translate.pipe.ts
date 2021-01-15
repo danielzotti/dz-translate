@@ -6,7 +6,20 @@ import { TranslateService } from './translate.service';
 */
 @Pipe({ name: 'translate' })
 export class TranslatePipe implements PipeTransform {
+  constructor(private translateService: TranslateService) {
+  }
+
   transform(value: string, key: string): string {
-    return TranslateService.translate(value, key);
+    return this.translateService.translate(value, key);
+  }
+}
+
+@Pipe({ name: 'translateContinuously', pure: false })
+export class TranslateContinuouslyPipe implements PipeTransform {
+  constructor(private translateService: TranslateService) {
+  }
+
+  transform(value: string, key: string): string {
+    return this.translateService.translate(value, key);
   }
 }

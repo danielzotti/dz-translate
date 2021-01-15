@@ -17,7 +17,12 @@ export class TranslateDirective implements OnChanges {
 
   value: string;
 
-  constructor(private el: ElementRef) {
+  constructor(private el: ElementRef, private translateService: TranslateService) {
+    if(this.translateService.isContinuouslyCheckActive) {
+      this.translateService.currentTranslationId$.subscribe(res => {
+        this.activate();
+      });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -27,7 +32,7 @@ export class TranslateDirective implements OnChanges {
   public activate = () => {
     const element: HTMLElement = this.el.nativeElement;
 
-    const translation = TranslateService.translate(this.value, this.key);
+    const translation = this.translateService.translate(this.value, this.key);
 
     if (translation != null) {
       element.classList.add('pc-translate');

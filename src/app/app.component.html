@@ -1,10 +1,25 @@
+<h1>DZ-Translate</h1>
 <div>
-  <h1 dz-translate="app.welcome">This is a fallback text</h1>
-
+  <h3 dz-translate="app.welcome">Welcome</h3>
   <ul>
-    <li> {{ 'You can use it as a pipe' | translate:'app.examples.pipe' }}</li>
+    <li> {{ 'You can use it as a pipe' | translateContinuously:'app.examples.pipe' }}</li>
     <li dz-translate="app.examples.directive"> You can use it as a directive</li>
-    <li [dz-translate]="dynamicKey"> You can use it dinamically</li>
+    <li [dz-translate]="dynamicKey"> You can use it dynamically</li>
     <li dz-translate="app.examples.html">You can print also HTML text</li>
+    <li dz-translate="app.examples.html">Another example with the same key (it uses memoization)</li>
+    <li dz-translate="app.unexistentKey">If the translation key doesn't exists, the original html/text is shown</li>
   </ul>
+  <h5>Pure and Impure Pipes</h5>
+  <ul>
+    <li> Pure ->  {{ 'You can use it as a pipe' | translate:'app.examples.pipe' }}</li>
+    <li> Impure -> {{ 'You can use it as a pipe' | translateContinuously:'app.examples.pipe' }}</li>
+  </ul>
+
+  <button (click)="setLanguageTo('it')" *ngIf="currentTranslationKey === 'en'">
+    Change to Italian
+  </button>
+  <button (click)="setLanguageTo('en')" *ngIf="currentTranslationKey === 'it'">
+    Change to English
+  </button>
 </div>
+
