@@ -1,0 +1,10 @@
+<div>
+  <h1 dz-translate="app.welcome">This is a fallback text</h1>
+
+  <ul>
+    <li> {{ 'You can use it as a pipe' | translate:'app.examples.pipe' }}</li>
+    <li dz-translate="app.examples.directive"> You can use it as a directive</li>
+    <li [dz-translate]="dynamicKey"> You can use it dinamically</li>
+    <li dz-translate="app.examples.html">You can print also HTML text</li>
+  </ul>
+</div>

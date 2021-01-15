@@ -1,0 +1,13 @@
+{
+  "id": "it",
+  "version": "1",
+  "app": {
+    "welcome": "Welcome to DZ-translate!",
+    "examples": {
+      "pipe": "You can use it as a PIPE",
+      "directive": "You can use it as a DIRECTIVE",
+      "dynamicKey": "You can use it with a DYNAMIC KEY",
+      "html": "You can use it with HTML, using <strong>bold</strong> or <em>italic</em>"
+    }
+  }
+}
